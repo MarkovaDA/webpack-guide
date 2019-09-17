@@ -1,12 +1,14 @@
-import component from "./component";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/style.css";
+import component from "./components/component";
 
-let demoComponent = component();
-document.body.appendChild(demoComponent);
+let rootComponent = component();
+document.body.appendChild(rootComponent);
 
-// if (module.hot) {
-//   module.hot.accept("./component", () => {
-//     const nextComponent = component();
-//     document.body.replaceChild(nextComponent, demoComponent);
-//     demoComponent = nextComponent;
-//   });
-// }
+if (module.hot) {
+  module.hot.accept("./components/component", () => {
+    const nextComponent = component();
+    document.body.replaceChild(nextComponent, rootComponent);
+    rootComponent = nextComponent;
+  });
+}
